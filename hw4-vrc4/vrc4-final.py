@@ -22,7 +22,7 @@ def encryptVigenere(plaintext, key):
 
 
 def decryptVigenere(vigenereBytes, key):
-    vigenereBytes = []
+    result = []
     key_length = len(key)
     key_as_int = key
     ciphertext_int = vigenereBytes
@@ -31,13 +31,12 @@ def decryptVigenere(vigenereBytes, key):
         if(ciphertext_int[i] == 32):
             #Blank space detected, we only add it to the cipher text
             #print(plaintext_int[i])
-            vigenereBytes.append(32)
+            result.append(32)
             conta -= 1
         else:
             value = (ciphertext_int[i] - key_as_int[(i + conta) % key_length]) % 256
-            print(value)
-            vigenereBytes.append(value + keyVector[0])
-    return vigenereBytes
+            result.append(value + keyVector[0])
+    return result
 
 #Initial Permutation of S 
 def KSA(key):
@@ -135,6 +134,10 @@ if __name__ == '__main__':
     DC1 = decryptVigenere(c1, keyVectorRc4[0:j])
     DC2 = decryptVigenere(c2, keyVectorRc4[j:len(Crc4Vector)-1])
     Crc4Mix = []
+    print("Decrypted DC1: ")
+    print(DC1)
+    print("Decrypted DC2: ")
+    print(DC2)
     #Generate Crc4
     for element in DC1:
         Crc4Mix.append(element)
