@@ -75,7 +75,7 @@ def RC4(key):
 if __name__ == '__main__':
 
     keyText = 'ABCD'
-    plaintext = 'Hello world'
+    plaintext = 'ABCD'
     print("Plaintext: " + plaintext)
     print("Key: "+keyText)
 
